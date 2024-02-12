@@ -1,0 +1,10 @@
+<div class="container my-4">
+    <h2 class="text-center">{{stock == null?"Insert":"Edit"}} Stock</h2>
+    <form [formGroup]="stockForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+      <app-text-input formControlName="symbol" [label]="'Symbol'"></app-text-input>
+      <app-text-input formControlName="price" [label]="'price'" [type]="'number'"></app-text-input>
+      <span class="text-danger my-2">{{error}}</span>
+      <button type="submit" class="btn btn-primary form-control" [disabled]="stockForm.invalid" >{{stock == null?"Insert":"Edit"}} Brand</button>
+      <button #closeModal type="button" class="d-none" data-bs-dismiss="modal">Close</button>
+    </form>
+  </div>

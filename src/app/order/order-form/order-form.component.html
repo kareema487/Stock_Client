@@ -1,0 +1,23 @@
+<div class="container my-4">
+    <h2 class="text-center">{{order == null?"Insert":"Edit"}} Order</h2>
+    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="form-group my-2">
+            <label for="stock">Stocks</label>
+            <select id="stocks" formControlName="symbol"class="form-control">
+                <option *ngFor="let stock of stocks" value="{{stock.symbol}}">{{stock.symbol}}</option>
+            </select>
+        </div>
+        <app-text-input formControlName="quantity" [label]="'Quantity'" [type]="'number'"></app-text-input>
+
+        <div class="form-group my-2">
+            <label for="orderType">Order Type</label>
+            <select id="orderType" formControlName="orderType"class="form-control">
+                <option *ngFor="let type of orderTypes" value="{{type}}">{{type}}</option>
+            </select>
+        </div>
+        <span class="text-danger my-2">{{error}}</span>
+        <button type="submit" class="btn btn-primary form-control" [disabled]="orderForm.invalid">{{order ==
+            null?"Insert":"Edit"}} Order</button>
+        <button #closeModal type="button" class="d-none" data-bs-dismiss="modal">Close</button>
+    </form>
+</div>
